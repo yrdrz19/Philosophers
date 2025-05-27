@@ -6,7 +6,7 @@
 #    By: yaperalt <yaperalt@student.42malaga.com    +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2025/05/27 12:10:15 by yaperalt          #+#    #+#              #
-#    Updated: 2025/05/27 12:37:58 by yaperalt         ###   ########.fr        #
+#    Updated: 2025/05/27 13:02:01 by yaperalt         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -58,6 +58,7 @@ $(OBJS_DIR)%.o: src/%.c
 all: $(NAME)
 
 clean:
+	@echo -n "Are you sure? This action is irreversible. [y/N] " && read ans && [ $${ans:-N} = y ]
 	@echo "$(BOLD_RED)Deleting object files folder...$(RESET)"
 	@$(RM) $(OBJS_DIR)
 
