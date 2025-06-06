@@ -6,7 +6,7 @@
 #    By: yaperalt <yaperalt@student.42malaga.com    +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2025/05/27 12:10:15 by yaperalt          #+#    #+#              #
-#    Updated: 2025/05/27 13:02:01 by yaperalt         ###   ########.fr        #
+#    Updated: 2025/06/01 22:39:49 by yaperalt         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -46,24 +46,24 @@ OBJS = $(addprefix $(OBJS_DIR), $(notdir $(SRCS:.c=.o)))
 # $^ Automatic variable: meaning "all prerequisites" listed to the right of
 # the colon in your rule
 $(NAME): $(OBJS)
-	@echo "$(GREEN)Linking object files...$(RESET)"
+	@echo "$(GREEN)🔗Linking object files...🔗$(RESET)"
 	@$(CC) $(CFLAGS) -o $@ $^
-	@echo "$(BOLD_GREEN)Executable created!$(RESET)"
+	@echo "$(BOLD_GREEN)✅Executable created!✅$(RESET)"
 
 $(OBJS_DIR)%.o: src/%.c
 	@$(MKDIR) $(OBJS_DIR)
-	@echo "$(BOLD_YELLOW)Compiling source file into object file...$(RESET)"
+	@echo "$(BOLD_YELLOW)🔨Compiling sources files into objects files...🔨$(RESET)"
 	@$(CC) $(CFLAGS) -c $< -o $@
 
 all: $(NAME)
 
 clean:
 	@echo -n "Are you sure? This action is irreversible. [y/N] " && read ans && [ $${ans:-N} = y ]
-	@echo "$(BOLD_RED)Deleting object files folder...$(RESET)"
+	@echo "$(BOLD_RED)❌Deleting object files folder...❌$(RESET)"
 	@$(RM) $(OBJS_DIR)
 
 fclean: clean
-	@echo "$(BOLD_MAGENTA)Removing executable...$(RESET)"
+	@echo "$(BOLD_MAGENTA)❌Removing executable...❌$(RESET)"
 	@$(RM) $(NAME)
 
 re: fclean all

@@ -6,7 +6,7 @@
 /*   By: yaperalt <yaperalt@student.42malaga.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/04/11 18:28:20 by yaperalt          #+#    #+#             */
-/*   Updated: 2025/05/27 12:38:25 by yaperalt         ###   ########.fr       */
+/*   Updated: 2025/06/03 21:38:28 by yaperalt         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,8 +14,9 @@
 
 int	main(int argc, char **argv)
 {
-	(void)argc;
-	(void)argv;
-	printf("Hola!\n");
+	if (argc != 5 || argc != 6)
+	{
+
+	}
 	return (0);
 }
