@@ -1,32 +1,26 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   main.c                                             :+:      :+:    :+:   */
+/*   philo.c                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: yaperalt <yaperalt@student.42malaga.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2025/04/11 18:28:20 by yaperalt          #+#    #+#             */
-/*   Updated: 2025/06/17 13:19:47 by yaperalt         ###   ########.fr       */
+/*   Created: 2025/06/17 12:41:58 by yaperalt          #+#    #+#             */
+/*   Updated: 2025/06/17 12:47:56 by yaperalt         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../inc/philo.h"
 
-int	main(int argc, char **argv)
+void	init_philos(int argc, char **argv, t_data *data)
 {
-	t_data	data;
+	data->n_philo = ft_atoi(argv[1]);
+	data->t_die = ft_atoi(argv[2]);
+	data->t_eat = ft_atoi(argv[3]);
+	data->t_sleep = ft_atoi(argv[4]);
+	if (argc == 6)
+		data->must_eat = ft_atoi(argv[5]);
+	else
+		data->must_eat = -1;
 
-	if (argc != 5 && argc != 6)
-	{
-		display_error_message();
-		return (EXIT_FAILURE);
-	}
-	if (!check_arguments(argc, argv))
-	{
-		printf("\n Invalid argument format\n\n");
-		display_error_message();
-		return (EXIT_FAILURE);
-	}
-	init_philos(int argc, char **argv, &data);
-	return (EXIT_SUCCESS);
 }
