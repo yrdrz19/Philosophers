@@ -17,6 +17,14 @@ There are three main issues that arise when implementing concurrency in computer
 
 - Race Conditions: A race condition in concurrency occurs when two or more threads or processes access shared resources (like variables or files) at the same time, and the final outcome depends on the timing of their execution. This can lead to unpredictable or incorrect behavior. A critical section is a part of the code where shared resources are accessed or modified. To prevent race conditions, only one thread should enter a critical section at a time.
 
+
+Synchronization Tools
+
+- Locks/Mutexes: Ensure only one thread can access a resource at a time.
+- Semaphores: Allow a set number of threads to access a resource.
+- Barriers: Synchronize threads at a certain point in execution.
+- Condition Variables: Allow threads to wait for certain conditions to be met.
+
 ## Resources
 
 - [Code(quoi)](https://www.codequoi.com/en/threads-mutexes-and-concurrent-programming-in-c/)
