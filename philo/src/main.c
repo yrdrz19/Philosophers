@@ -6,7 +6,7 @@
 /*   By: yaperalt <yaperalt@student.42malaga.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/04/11 18:28:20 by yaperalt          #+#    #+#             */
-/*   Updated: 2025/06/17 13:19:47 by yaperalt         ###   ########.fr       */
+/*   Updated: 2025/06/17 13:42:32 by yaperalt         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,6 +27,6 @@ int	main(int argc, char **argv)
 		display_error_message();
 		return (EXIT_FAILURE);
 	}
-	init_philos(int argc, char **argv, &data);
+	init_philos(argc, argv, &data);
 	return (EXIT_SUCCESS);
 }

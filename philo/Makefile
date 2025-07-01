@@ -6,7 +6,7 @@
 #    By: yaperalt <yaperalt@student.42malaga.com    +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2025/05/27 12:10:15 by yaperalt          #+#    #+#              #
-#    Updated: 2025/06/16 18:21:42 by yaperalt         ###   ########.fr        #
+#    Updated: 2025/07/01 18:26:27 by yaperalt         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -37,7 +37,10 @@ CFLAGS = -Wall -Wextra -Werror -pthread
 OBJS_DIR = obj/
 MKDIR = mkdir -p
 SRCS = src/main.c \
-		src/utils.c
+		src/utils.c \
+		src/init.c \
+		src/print.c \
+		src/time.c
 
 OBJS = $(addprefix $(OBJS_DIR), $(notdir $(SRCS:.c=.o)))
 
