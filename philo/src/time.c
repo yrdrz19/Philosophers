@@ -6,7 +6,7 @@
 /*   By: yaperalt <yaperalt@student.42malaga.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/07/01 09:55:14 by yaperalt          #+#    #+#             */
-/*   Updated: 2025/07/01 18:17:06 by yaperalt         ###   ########.fr       */
+/*   Updated: 2025/07/08 17:45:34 by yaperalt         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,3 +28,15 @@ __uint64_t	get_current_time(void)
 	gettimeofday(&tv, NULL);
 	return ((tv.tv_sec * 1000) + (tv.tv_usec / 1000));
 }
+
+/**
+ * The purpose is to pause(sleep) the current thread for and accurate
+ * amount of time, time in milliseconds.
+ */
+void	precise_usleep(uint64_t time)
+{
+	uint64_t start = get_time();
+	while (get_time() - start < time)
+		usleep(500);
+}
+
