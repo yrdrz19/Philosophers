@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   main.c                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: yaperalt <yaperalt@student.42malaga.com    +#+  +:+       +#+        */
+/*   By: yz <yz@student.42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/04/11 18:28:20 by yaperalt          #+#    #+#             */
-/*   Updated: 2025/07/08 15:06:26 by yaperalt         ###   ########.fr       */
+/*   Updated: 2025/08/08 12:16:02 by yz               ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,5 +28,8 @@ int	main(int argc, char **argv)
 		return (EXIT_FAILURE);
 	}
 	init_philos(argc, argv, &data);
+	init_forks_and_philos(&data);
+	start_simulation(&data);
+	cleanup_and_exit(&data);
 	return (EXIT_SUCCESS);
 }

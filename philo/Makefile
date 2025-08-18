@@ -3,10 +3,10 @@
 #                                                         :::      ::::::::    #
 #    Makefile                                           :+:      :+:    :+:    #
 #                                                     +:+ +:+         +:+      #
-#    By: yaperalt <yaperalt@student.42malaga.com    +#+  +:+       +#+         #
+#    By: yz <yz@student.42.fr>                      +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2025/05/27 12:10:15 by yaperalt          #+#    #+#              #
-#    Updated: 2025/07/01 18:26:27 by yaperalt         ###   ########.fr        #
+#    Updated: 2025/08/08 12:16:02 by yz               ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -40,7 +40,8 @@ SRCS = src/main.c \
 		src/utils.c \
 		src/init.c \
 		src/print.c \
-		src/time.c
+		src/time.c \
+		src/simulation.c
 
 OBJS = $(addprefix $(OBJS_DIR), $(notdir $(SRCS:.c=.o)))
 
