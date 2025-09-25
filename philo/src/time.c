@@ -6,7 +6,7 @@
 /*   By: yz <yz@student.42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/07/01 09:55:14 by yaperalt          #+#    #+#             */
-/*   Updated: 2025/08/08 12:16:02 by yz               ###   ########.fr       */
+/*   Updated: 2025/09/10 14:22:16 by yz               ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -35,8 +35,9 @@ uint64_t	get_current_time(void)
  */
 void	precise_usleep(uint64_t time)
 {
-	uint64_t start = get_current_time();
+	uint64_t	start;
+
+	start = get_current_time();
 	while (get_current_time() - start < time)
 		usleep(500);
 }
-
