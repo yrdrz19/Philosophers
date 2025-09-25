@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   init.c                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: yaperalt <yaperalt@student.42malaga.com    +#+  +:+       +#+        */
+/*   By: yz <yz@student.42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/06/17 12:41:58 by yaperalt          #+#    #+#             */
-/*   Updated: 2025/07/14 07:42:10 by yaperalt         ###   ########.fr       */
+/*   Updated: 2025/09/10 14:22:24 by yz               ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,9 +22,15 @@ void	init_philos(int argc, char **argv, t_data *data)
 		data->must_eat = ft_atoi(argv[5]);
 	else
 		data->must_eat = -1;
+	data->died = false;
+	data->stop = false;
+	data->finished = 0;
+	data->start_time = 0;
 	data->philosophers = malloc(sizeof(t_philo) * data->n_philo);
 	data->threads = malloc(sizeof(pthread_t) * data->n_philo);
-	data->forks = malloc(sizeof(pthread_mutex_t) *data->n_philo);
+	data->forks = malloc(sizeof(pthread_mutex_t) * data->n_philo);
+	pthread_mutex_init(&data->print_mutex, NULL);
+	pthread_mutex_init(&data->state_mutex, NULL);
 }
 
 void	init_forks_and_philos(t_data *data)
@@ -49,6 +55,7 @@ void	init_forks_and_philos(t_data *data)
 			data->philosophers[i].right_fork = &data->forks[0];
 		else
 			data->philosophers[i].right_fork = &data->forks[i + 1];
+		pthread_mutex_init(&data->philosophers[i].meal_mutex, NULL);
+		i++;
 	}
 }
-

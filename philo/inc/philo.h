@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   philo.h                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: yaperalt <yaperalt@student.42malaga.com    +#+  +:+       +#+        */
+/*   By: yz <yz@student.42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/04/11 18:28:11 by yaperalt          #+#    #+#             */
-/*   Updated: 2025/07/18 14:58:26 by yaperalt         ###   ########.fr       */
+/*   Updated: 2025/09/10 14:21:16 by yz               ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -39,7 +39,7 @@
 // uint64_t
 # include <stdint.h>
 
-struct s_philo;
+struct	s_philo;
 
 typedef struct s_data
 {
@@ -48,12 +48,17 @@ typedef struct s_data
 	int				t_eat;
 	int				t_sleep;
 	int				t_id;
-	long			start_time;
+	uint64_t		start_time;
 	int				must_eat;
 	bool			died;
+	bool			stop;
+	int				finished;
 	pthread_mutex_t	*forks;
 	pthread_t		*threads;
 	struct s_philo	*philosophers;
+	pthread_mutex_t	print_mutex;
+	pthread_mutex_t	state_mutex;
+	pthread_t		monitor_thread;
 }	t_data;
 
 typedef struct s_philo
@@ -63,13 +68,15 @@ typedef struct s_philo
 	uint64_t		last_meal;
 	pthread_mutex_t	*left_fork;
 	pthread_mutex_t	*right_fork;
-	pthread_t		monitor;
+	pthread_mutex_t	meal_mutex;
 	t_data			*data;
 }	t_philo;
 
 //init.c
 void		init_philos(int argc, char **argv, t_data *data);
 void		init_forks_and_philos(t_data *data);
+void		start_simulation(t_data *data);
+void		cleanup_and_exit(t_data *data);
 
 // print.c
 void		print_eating(t_philo *philo);
@@ -85,7 +92,7 @@ bool		ft_atoi_boolean(const char *str);
 int			check_arguments(int argc, char **argv);
 
 // time.c
-__uint64_t	get_current_time(void);
+uint64_t	get_current_time(void);
 void		precise_usleep(uint64_t time);
 
 #endif

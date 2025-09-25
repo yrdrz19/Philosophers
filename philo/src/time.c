@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   time.c                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: yaperalt <yaperalt@student.42malaga.com    +#+  +:+       +#+        */
+/*   By: yz <yz@student.42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/07/01 09:55:14 by yaperalt          #+#    #+#             */
-/*   Updated: 2025/07/08 17:45:34 by yaperalt         ###   ########.fr       */
+/*   Updated: 2025/09/10 14:22:16 by yz               ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,7 +21,7 @@
  *
  * The epoch in computing is a reference point from which time is measured.
  */
-__uint64_t	get_current_time(void)
+uint64_t	get_current_time(void)
 {
 	struct timeval	tv;
 
@@ -35,8 +35,9 @@ __uint64_t	get_current_time(void)
  */
 void	precise_usleep(uint64_t time)
 {
-	uint64_t start = get_time();
-	while (get_time() - start < time)
+	uint64_t	start;
+
+	start = get_current_time();
+	while (get_current_time() - start < time)
 		usleep(500);
 }
-

@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   print.c                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: yaperalt <yaperalt@student.42malaga.com    +#+  +:+       +#+        */
+/*   By: yz <yz@student.42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/06/30 19:39:08 by yaperalt          #+#    #+#             */
-/*   Updated: 2025/07/08 18:47:45 by yaperalt         ###   ########.fr       */
+/*   Updated: 2025/09/10 15:28:39 by yz               ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,40 +14,83 @@
 
 void	print_taking(t_philo *philo)
 {
-	long	time;
+	uint64_t	time;
 
+	pthread_mutex_lock(&philo->data->state_mutex);
+	if (philo->data->stop)
+	{
+		pthread_mutex_unlock(&philo->data->state_mutex);
+		return ;
+	}
+	pthread_mutex_unlock(&philo->data->state_mutex);
+	pthread_mutex_lock(&philo->data->print_mutex);
 	time = get_current_time() - philo->data->start_time;
-	printf(COLOR_TAKEN"%ld %d has taken a fork\n"RESET, time, philo->id);
+	printf(COLOR_TAKEN"%llu %d has taken a fork\n"RESET,
+		(unsigned long long)time, philo->id);
+	pthread_mutex_unlock(&philo->data->print_mutex);
 }
 
 void	print_eating(t_philo *philo)
 {
-	long	time;
+	uint64_t	time;
 
+	pthread_mutex_lock(&philo->data->state_mutex);
+	if (philo->data->stop)
+	{
+		pthread_mutex_unlock(&philo->data->state_mutex);
+		return ;
+	}
+	pthread_mutex_unlock(&philo->data->state_mutex);
+	pthread_mutex_lock(&philo->data->print_mutex);
 	time = get_current_time() - philo->data->start_time;
-	printf(COLOR_EATING"%ld %d is eating\n"RESET, time, philo->id);
+	printf(COLOR_EATING"%llu %d is eating\n"RESET,
+		(unsigned long long)time, philo->id);
+	pthread_mutex_unlock(&philo->data->print_mutex);
 }
 
 void	print_sleeping(t_philo *philo)
 {
-	long	time;
+	uint64_t	time;
 
+	pthread_mutex_lock(&philo->data->state_mutex);
+	if (philo->data->stop)
+	{
+		pthread_mutex_unlock(&philo->data->state_mutex);
+		return ;
+	}
+	pthread_mutex_unlock(&philo->data->state_mutex);
+	pthread_mutex_lock(&philo->data->print_mutex);
 	time = get_current_time() - philo->data->start_time;
-	printf(COLOR_SLEEPING"%ld %d is sleeping\n"RESET, time, philo->id);
+	printf(COLOR_SLEEPING"%llu %d is sleeping\n"RESET,
+		(unsigned long long)time, philo->id);
+	pthread_mutex_unlock(&philo->data->print_mutex);
 }
 
 void	print_thinking(t_philo *philo)
 {
-	long	time;
+	uint64_t	time;
 
+	pthread_mutex_lock(&philo->data->state_mutex);
+	if (philo->data->stop)
+	{
+		pthread_mutex_unlock(&philo->data->state_mutex);
+		return ;
+	}
+	pthread_mutex_unlock(&philo->data->state_mutex);
+	pthread_mutex_lock(&philo->data->print_mutex);
 	time = get_current_time() - philo->data->start_time;
-	printf(COLOR_THINKING"%ld %d is thinking\n"RESET, time, philo->id);
+	printf(COLOR_THINKING"%llu %d is thinking\n"RESET,
+		(unsigned long long)time, philo->id);
+	pthread_mutex_unlock(&philo->data->print_mutex);
 }
 
 void	print_died(t_philo *philo)
 {
-	long	time;
+	uint64_t	time;
 
+	pthread_mutex_lock(&philo->data->print_mutex);
 	time = get_current_time() - philo->data->start_time;
-	printf(COLOR_DIED"%ld %d died\n"RESET, time, philo->id);
+	printf(COLOR_DIED"%llu %d died\n"RESET,
+		(unsigned long long)time, philo->id);
+	pthread_mutex_unlock(&philo->data->print_mutex);
 }
