@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   utils.c                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: yaperalt <yaperalt@student.42malaga.com    +#+  +:+       +#+        */
+/*   By: yz <yz@student.42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/05/27 13:31:27 by yaperalt          #+#    #+#             */
-/*   Updated: 2025/06/14 17:29:56 by yaperalt         ###   ########.fr       */
+/*   Updated: 2025/09/10 15:25:49 by yz               ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -76,7 +76,7 @@ int	check_arguments(int argc, char **argv)
 	i = 0;
 	while (i < argc - 1)
 	{
-		if(!ft_atoi_boolean(argv[i + 1]))
+		if (!ft_atoi_boolean(argv[i + 1]))
 			return (0);
 		i++;
 	}
