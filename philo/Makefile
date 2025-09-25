@@ -6,7 +6,7 @@
 #    By: yz <yz@student.42.fr>                      +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2025/05/27 12:10:15 by yaperalt          #+#    #+#              #
-#    Updated: 2025/08/08 12:16:02 by yz               ###   ########.fr        #
+#    Updated: 2025/09/25 17:33:12 by yz               ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -41,6 +41,7 @@ SRCS = src/main.c \
 		src/init.c \
 		src/print.c \
 		src/time.c \
+		src/routine.c \
 		src/simulation.c
 
 OBJS = $(addprefix $(OBJS_DIR), $(notdir $(SRCS:.c=.o)))
