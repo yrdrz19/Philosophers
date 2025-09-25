@@ -6,7 +6,7 @@
 /*   By: yz <yz@student.42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/04/11 18:28:11 by yaperalt          #+#    #+#             */
-/*   Updated: 2025/09/10 14:21:16 by yz               ###   ########.fr       */
+/*   Updated: 2025/09/25 17:33:12 by yz               ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -55,7 +55,7 @@ typedef struct s_data
 	int				finished;
 	pthread_mutex_t	*forks;
 	pthread_t		*threads;
-	struct s_philo	*philosophers;
+	struct s_philo	*phs;
 	pthread_mutex_t	print_mutex;
 	pthread_mutex_t	state_mutex;
 	pthread_t		monitor_thread;
@@ -94,5 +94,12 @@ int			check_arguments(int argc, char **argv);
 // time.c
 uint64_t	get_current_time(void);
 void		precise_usleep(uint64_t time);
+
+// routine.c
+void		philo_eat(t_philo *ph);
+void		*philo_routine(void *arg);
+bool		should_stop(t_data *data);
+void		set_stop(t_data *data);
+void		announce_death(t_philo *ph);
 
 #endif
