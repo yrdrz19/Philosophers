@@ -6,7 +6,7 @@
 /*   By: yz <yz@student.42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/04/11 18:28:11 by yaperalt          #+#    #+#             */
-/*   Updated: 2025/08/08 12:16:02 by yz               ###   ########.fr       */
+/*   Updated: 2025/09/10 14:21:16 by yz               ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -39,7 +39,7 @@
 // uint64_t
 # include <stdint.h>
 
-struct s_philo;
+struct	s_philo;
 
 typedef struct s_data
 {
