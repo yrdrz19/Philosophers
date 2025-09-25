@@ -6,7 +6,7 @@
 /*   By: yz <yz@student.42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/07/08 16:23:06 by yaperalt          #+#    #+#             */
-/*   Updated: 2025/08/08 12:16:02 by yz               ###   ########.fr       */
+/*   Updated: 2025/09/10 15:27:31 by yz               ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,7 +14,8 @@
 
 static bool	should_stop(t_data *data)
 {
-	bool stop;
+	bool	stop;
+
 	pthread_mutex_lock(&data->state_mutex);
 	stop = data->stop;
 	pthread_mutex_unlock(&data->state_mutex);
@@ -64,7 +65,8 @@ static void	*monitor_all(void *arg)
 				announce_death(&data->philosophers[i]);
 				return (NULL);
 			}
-			if (data->must_eat != -1 && data->philosophers[i].eat_count >= data->must_eat)
+			if (data->must_eat != -1
+				&& (data->philosophers[i].eat_count >= data->must_eat))
 				all_done++;
 			pthread_mutex_unlock(&data->philosophers[i].meal_mutex);
 			i++;
@@ -85,7 +87,6 @@ static void	philo_eat(t_philo *ph)
 	print_taking(ph);
 	if (ph->data->n_philo == 1)
 	{
-		// Will die after t_die as no second fork
 		precise_usleep(ph->data->t_die + 1);
 		pthread_mutex_unlock(ph->left_fork);
 		return ;
@@ -104,7 +105,7 @@ static void	philo_eat(t_philo *ph)
 
 static void	*philo_routine(void *arg)
 {
-	t_philo *ph;
+	t_philo	*ph;
 
 	ph = (t_philo *)arg;
 	if (ph->id % 2 == 0)
@@ -143,7 +144,6 @@ void	start_simulation(t_data *data)
 		i++;
 	}
 	pthread_create(&data->monitor_thread, NULL, monitor_all, data);
-	// Join philosophers (they may finish early if must_eat reached)
 	i = 0;
 	while (i < data->n_philo)
 	{
@@ -156,7 +156,7 @@ void	start_simulation(t_data *data)
 
 void	cleanup_and_exit(t_data *data)
 {
-	int i;
+	int	i;
 
 	if (!data)
 		return ;
@@ -181,5 +181,3 @@ void	cleanup_and_exit(t_data *data)
 	pthread_mutex_destroy(&data->print_mutex);
 	pthread_mutex_destroy(&data->state_mutex);
 }
-
-
